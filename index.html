@@ -77,13 +77,26 @@
 							</a>
 						</li>
 							</ul>
+							<img  id="myImg" style="width: 400px; height: 200px;margin: 10px auto;">
 					</div>
 				</div>
 		   	 <div class="mui-off-canvas-backdrop"></div>
 			</div>
 		</div>
 		<script type="text/javascript">
-			
+			//1、拍照功能-（MUI框架中移动端点击事件是tap）
+			let takePhoto = function(){
+				//点击事件已生效，进行拍照操作
+				
+				//1、获取摄像机对象-plus是全局对象，可以调用拍照功能
+				//2、摄像机对象有个 拍照方法
+				//3、用IO对象转为绝对路径，显示在页面上
+				let camera = plus.camera.getCamera(1);
+				camera.captureImage((path)=>{ //拍照成功执行的函数，得到图片路径（相对路径）
+					document.getElementById('myImg').src = plus.io.convertLocalFileSystemURL(path)
+				})
+			}
+			document.getElementById('myphoto').addEventListener('tap', takePhoto) //监听点击事件执行函数
 		</script>
 </body>
 </html>
