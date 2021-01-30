@@ -70,7 +70,7 @@
 								<div class="mui-media-body">地图</div>
 							</a>
 						</li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+						<li id="myPhone" class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 							<a href="#">
 								<span class="mui-icon mui-icon-phone"></span>
 								<div class="mui-media-body">拨号</div>
@@ -101,6 +101,11 @@
 			//2、点击地图跳转到map页面
 			document.getElementById('myMap').addEventListener('tap', function(){
 				location.href='map.html'
+			})
+			
+			//3、拨号功能-（硬件device中有拨号方法）
+			document.getElementById('myPhone').addEventListener('tap', ()=>{
+				plus.device.dial('10086', true)
 			})
 		</script>
 </body>
